@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amr Essam — Full-Stack Developer & Creative Designer</title>
+<meta name="description" content="Amr Essam is a Software Engineering student from Kafr El Dawar, Egypt. Full-Stack Developer, Game Developer, Cybersecurity Enthusiast & Graphic Designer.">
+<meta name="theme-color" content="#090909">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090909;--o1:#ff8c00;--o2:#fa6e00;--o3:#e60026;--glass:rgba(255,255,255,.05);--line:rgba(255,255,255,.1);--txt:#e8e4df;--mut:#9a948d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:'Michroma',system-ui,sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;font-size:13px;line-height:1.8}
+@media(pointer:fine){html,body,a,button,.card{cursor:none}}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+/* background layers */
+.fx{position:fixed;inset:0;pointer-events:none;z-index:0}
+.grid{background-image:linear-gradient(rgba(255,140,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,140,0,.05) 1px,transparent 1px);background-size:80px 80px}
+.noise{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
+.vig{background:radial-gradient(circle at center,transparent 40%,rgba(0,0,0,.7))}
+.stars{background-image:radial-gradient(#ff8c00 1px,transparent 1px);background-size:150px 150px;opacity:.07;animation:drift 30s linear infinite}
+@keyframes drift{to{background-position:150px 300px}}
+.orb{position:fixed;width:900px;height:900px;left:-250px;top:-150px;border-radius:50%;filter:blur(160px);background:radial-gradient(circle,rgba(255,120,0,.16),transparent 70%);pointer-events:none;z-index:0;animation:orb 20s ease-in-out infinite}
+@keyframes orb{50%{transform:translate(55vw,35vh)}}
+main,header,footer{position:relative;z-index:2}
+/* intro */
+#intro{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .8s,visibility .8s}
+#intro.done{opacity:0;visibility:hidden}
+.intro-in{text-align:center}
+.intro-logo{font-size:clamp(2.2rem,9vw,6rem);color:var(--o3);letter-spacing:.05em;animation:glitch 1.6s steps(2) infinite;text-shadow:0 0 30px rgba(230,0,38,.5)}
+@keyframes glitch{0%,90%{transform:none}92%{transform:translate(-6px,2px) skewX(-12deg)}96%{transform:translate(6px,-2px) skewX(12deg)}}
+.bar{width:min(280px,70vw);height:2px;background:#222;margin:26px auto 12px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--o2),var(--o3));box-shadow:0 0 12px var(--o2)}
+.pct{color:var(--mut);font-size:11px}
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0}
+.nav{width:min(1100px,92%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 24px;border-radius:50px;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;overflow:hidden;transition:.4s}
+.nav:hover{box-shadow:0 0 25px rgba(255,140,0,.45),0 0 45px rgba(255,90,0,.25);border-color:rgba(255,150,50,.5)}
+.nav:after{content:"";position:absolute;top:0;left:-75%;width:40%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-25deg);animation:sh 5s infinite;pointer-events:none}
+@keyframes sh{0%{left:-75%}50%,100%{left:125%}}
+.brand{font-size:15px;color:var(--o1);letter-spacing:.08em}
+.links{display:flex;gap:26px;font-size:10px;letter-spacing:.12em}
+.links a{color:#ccc;transition:.3s;position:relative}
+.links a:hover,.links a.on{color:var(--o1)}
+.btn{display:inline-block;background:linear-gradient(to right,var(--o2),var(--o3));color:#fff;padding:12px 26px;border-radius:8px;font-size:11px;transition:.3s;border:0;font-family:inherit}
+.btn:hover{transform:scale(1.04);box-shadow:0 0 18px rgba(250,110,0,.6)}
+.btn.ghost{background:none;border:1px solid #555;color:#ccc}
+.btn.ghost:hover{background:#222;box-shadow:none}
+.nav .btn{padding:9px 18px;border-radius:30px}
+.burger{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:20px;padding:6px 12px;font-family:inherit}
+/* layout */
+section{padding:110px 0;width:min(1100px,90%);margin:auto}
+h2{font-size:clamp(1.3rem,3.4vw,2.2rem);line-height:1.3;margin-bottom:16px;background:linear-gradient(90deg,#fff,var(--o1));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--mut);max-width:620px;margin-bottom:44px}
+.rv{opacity:0;transform:translateY(26px);filter:blur(6px);transition:1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none;filter:none}
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;padding-top:130px}
+.hero .tag{color:var(--o1);font-size:11px;letter-spacing:.2em;margin-bottom:18px}
+.hero h1{font-size:clamp(2.4rem,7vw,5rem);line-height:1.1;margin-bottom:18px}
+.shiny{background:linear-gradient(90deg,#fff,#ffa500,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{0%{background-position:200%}100%{background-position:-200%}}
+.typed{min-height:2.2em;color:#ffb347;text-shadow:0 0 12px rgba(255,120,0,.6);font-size:clamp(.8rem,1.6vw,1rem)}
+.typed:after{content:"";display:inline-block;width:2px;height:1em;background:var(--o1);margin-left:5px;vertical-align:-2px;animation:bl .8s infinite}
+@keyframes bl{50%{opacity:0}}
+.hero p.lead{color:var(--mut);margin:20px 0 30px;max-width:520px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.photo{position:relative;justify-self:center;width:min(380px,80vw);aspect-ratio:4/5;animation:float 4s ease-in-out infinite alternate}
+@keyframes float{to{transform:translateY(10px)}}
+.photo .frame{position:absolute;inset:0;overflow:hidden;border-radius:6px;background:#141414 center/cover}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.photo:hover img{transform:scale(1.1)}
+.photo b{position:absolute;background:var(--o1);box-shadow:0 0 12px var(--o1);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.photo b.t,.photo b.bm{height:2px;left:-8px;right:-8px;transform:scaleX(0);transform-origin:left}
+.photo b.t{top:-8px}.photo b.bm{bottom:-8px;transition-delay:.16s}
+.photo b.l,.photo b.r{width:2px;top:-8px;bottom:-8px;transform:scaleY(0);transform-origin:top}
+.photo b.l{left:-8px;transition-delay:.24s}.photo b.r{right:-8px;transition-delay:.08s}
+.photo:hover b{transform:scale(1)}
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:14px 0;color:var(--o1);font-size:11px;letter-spacing:.2em;white-space:nowrap;position:relative;z-index:2}
+.marquee div{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* cards */
+.card{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:26px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);position:relative;overflow:hidden;transition:.5s}
+.card:hover{border-color:rgba(255,160,60,.45);box-shadow:0 0 30px rgba(255,120,0,.12)}
+.card h3{font-size:1rem;background:linear-gradient(90deg,#ffd27a,#ffb347);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.card p{color:var(--mut);font-size:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pills span{padding:5px 12px;font-size:10px;border-radius:30px;background:var(--glass);border:1px solid var(--line);color:#ffb347}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.meta{display:flex;gap:28px;margin-top:18px;font-size:10px;color:var(--mut)}
+.meta b{display:block;color:#fff;font-weight:400;font-size:12px}
+.link{display:inline-block;margin-top:16px;font-size:11px;color:var(--o1)}
+.link:hover{text-shadow:0 0 10px var(--o1)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stats strong{display:block;font-size:2.4rem;font-weight:400;color:var(--o1);text-shadow:0 0 20px rgba(255,120,0,.5)}
+.stats span{font-size:10px;color:var(--mut);letter-spacing:.1em}
+.skillbox h4{font-size:11px;color:var(--o1);letter-spacing:.15em;margin-bottom:6px;font-weight:400}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.gal figure{border-radius:12px;overflow:hidden;border:1px solid var(--line);position:relative;background:#141414;aspect-ratio:4/3}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gal figure:hover img{transform:scale(1.08)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-size:10px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.gal.tall figure{aspect-ratio:3/4}
+.cert small{color:var(--mut);font-size:10px;display:block;margin-bottom:6px}
+.cert .id{font-size:9px;word-break:break-all;margin-top:10px}
+.big{font-size:clamp(1.8rem,6vw,4rem);line-height:1.15;margin-bottom:28px}
+.mail{display:inline-flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:50px;padding:10px 12px 10px 24px;margin-bottom:28px;font-size:12px}
+.mail button{background:var(--glass);border:1px solid var(--line);color:#fff;padding:7px 14px;border-radius:30px;font-family:inherit;font-size:10px}
+.soc{display:flex;flex-wrap:wrap;gap:12px}
+.soc a{padding:9px 18px;border:1px solid var(--line);border-radius:30px;font-size:10px;transition:.3s}
+.soc a:hover{border-color:var(--o1);color:var(--o1);box-shadow:0 0 14px rgba(255,140,0,.3)}
+footer{border-top:1px solid var(--line);text-align:center;padding:30px 12px;font-size:10px;color:var(--mut)}
+/* cursor + lightbox */
+#cd,#cr{position:fixed;top:0;left:0;pointer-events:none;z-index:200;border-radius:50%;opacity:0}
+#cd{width:7px;height:7px;background:var(--o1);margin:-3.5px 0 0 -3.5px}
+#cr{width:34px;height:34px;border:1px solid var(--o1);margin:-17px 0 0 -17px;transition:width .25s,height .25s,margin .25s,background .25s}
+#cr.hv{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(255,140,0,.1)}
+@media(pointer:coarse){#cd,#cr{display:none}}
+#lb{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.92);display:none;place-items:center;padding:20px}
+#lb.on{display:grid}
+#lb img{max-height:90vh;border-radius:8px}
+@media(max-width:860px){.links,.nav .btn{display:none}.burger{display:block}.nav.open{flex-wrap:wrap;border-radius:26px}.nav.open .links{display:flex;flex-direction:column;width:100%;gap:14px;padding:10px 0}
+.hero{grid-template-columns:1fr;text-align:center;padding-top:120px}.hero .cta{justify-content:center}.hero p.lead{margin-inline:auto}.g3,.g2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}section{padding:80px 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}}
+
+#lang{background:var(--glass);color:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 10px;font-family:inherit;font-size:10px}
+#lang option{background:#111}
+html[lang=ar] body{font-family:'Cairo','Michroma',sans-serif}
+html[lang=ar] *{letter-spacing:0!important}
+.sh{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 0}
+.sh small{font-size:11px;letter-spacing:.35em;color:var(--mut);margin-bottom:18px}
+.xl{font-size:clamp(2.1rem,9vw,6.4rem);line-height:1.05;color:#fff;margin-bottom:22px}
+.xl em{font-style:normal;color:var(--o2)}
+.sh p{max-width:600px;color:var(--mut)}.sh p b{color:#fff;font-weight:400}
+.core{width:112px;height:112px;border-radius:50%;border:1px solid rgba(250,110,0,.6);display:grid;place-items:center;color:var(--o2);font-size:20px;box-shadow:0 0 40px rgba(250,110,0,.25);margin-bottom:34px;animation:pl 3s ease-in-out infinite}
+@keyframes pl{50%{box-shadow:0 0 70px rgba(250,110,0,.45)}}
+.dash{width:min(760px,100%);text-align:start;background:rgba(10,10,10,.8);border:1px solid var(--line);border-radius:22px;margin-top:36px;overflow:hidden}
+.dash header{position:static;display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);font-size:11px;color:var(--mut)}
+.dash header b{color:var(--o2);font-weight:400;margin-inline-end:10px}.dash header i{color:#2ecc71;font-style:normal}
+.dash .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px 22px 0}
+.dash .tl div{border:1px solid var(--line);border-radius:14px;padding:14px;font-size:10px;color:var(--mut)}.dash .tl strong{display:block;color:#fff;font-weight:400;font-size:1.1rem}
+.dash svg{display:block;margin:16px 22px;width:calc(100% - 44px);border:1px solid var(--line);border-radius:14px;background:#0a0a0a}
+.dash path{fill:none;stroke:var(--o2);stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s ease .3s}.in .dash path{stroke-dashoffset:0}
+.dash footer{border:1px solid var(--line);border-radius:14px;margin:0 22px 22px;padding:14px;font-size:11px;color:var(--mut)}
+.steps{display:flex;gap:70px;margin-top:40px}.steps div{font-size:10px;letter-spacing:.2em;color:var(--mut)}
+.steps span{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 10px;border:1px solid rgba(250,110,0,.4);background:rgba(250,110,0,.08);border-radius:16px;color:var(--o2);font-size:15px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px}
+.tile{aspect-ratio:1;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(0,0,0,.4) 40%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-size:11px;transition:.4s}
+.tile:hover{transform:scale(1.05);border-color:rgba(255,160,60,.5)}.tile b{font-size:18px;font-weight:400}
+@media(max-width:860px){.steps{gap:30px}.dash .tl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="intro"><div class="intro-in"><div class="intro-logo">A.ESSAM</div><div class="bar"><i></i></div><div class="pct">Initializing... <span id="p">0</span>%</div></div></div>
+<div class="fx grid"></div><div class="fx stars"></div><div class="orb"></div><div class="fx noise"></div><div class="fx vig"></div>
+<div id="cd"></div><div id="cr"></div>
+<div id="lb"><img alt=""></div>
+
+<header><nav class="nav" id="nav">
+  <a href="#home" class="brand">A.ESSAM</a>
+  <div class="links"><a href="#about">ABOUT</a><a href="#projects">PROJECTS</a><a href="#skills">SKILLS</a><a href="#certs">CERTS</a><a href="#design">DESIGN</a><a href="#contact">CONTACT</a></div>
+  <select id="lang" aria-label="Language"><option value="en">EN</option><option value="ar">AR</option><option value="es">ES</option><option value="it">IT</option></select><a class="btn" href="amr_essam_cv.pdf" download>CV ↓</a>
+  <button class="burger" onclick="nav.classList.toggle('open')" aria-label="Menu">MENU</button>
+</nav></header>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="tag">SOFTWARE ENGINEER & CREATIVE DEVELOPER</div>
+    <h1 class="shiny">AMR<br>ESSAM</h1>
+    <div class="typed" id="typed"></div>
+    <p class="lead">Software Engineering student based in Kafr El Dawar, Egypt. I build immersive games, secure systems, and creative visual projects.</p>
+    <div class="cta"><a class="btn" href="#projects">VIEW WORK</a><a class="btn ghost" href="amr_essam_cv.pdf" download>DOWNLOAD CV</a></div>
+  </div>
+  <div class="photo"><div class="frame"><img src="images/avatar.png" alt="Amr Essam profile photo"></div><b class="t"></b><b class="r"></b><b class="bm"></b><b class="l"></b></div>
+</section>
+<div class="marquee"><div id="mq"></div></div>
+
+<section id="about"><div class="rv">
+  <h2>Building robust systems, crafting immersive games, and breaking digital fortresses.</h2>
+  <p class="sub">My expertise spans the entire stack, from frontend interfaces to backend architecture and game engines. I treat engineering as a medium for interactive experiences and secure infrastructure.</p>
+  <div class="g2"><div class="card"><h3>Education</h3><p>Salah Salem High School<br>General Secondary Education<br>2026 — 2028</p></div>
+  <div class="card stats" style="grid-template-columns:repeat(2,1fr)"><div><strong data-n="3">0</strong><span>PROJECTS</span></div><div><strong data-n="4">0</strong><span>CERTIFICATES</span></div><div><strong data-n="6">0</strong><span>LOGOS</span></div><div><strong data-n="8">0</strong><span>CAR POSTERS</span></div></div></div>
+</div></section>
+
+<section id="projects"><div class="rv">
+  <h2>Selected projects</h2><p class="sub">Games and full-stack systems, built solo or with a partner.</p>
+  <div class="g3">
+    <div class="card"><h3>Andermagic</h3><p>A challenging 2D platformer built for precision and skill. Every level is hand-crafted. All mechanics, levels and artwork designed solo in Godot 4.6 with GDScript.</p><div class="pills"><span>GODOT 4.6</span><span>GDSCRIPT</span><span>2D PLATFORMER</span></div><div class="meta"><div>YEAR<b>2024</b></div><div>TYPE<b>Game Dev</b></div></div><a class="link" href="https://github.com/DEVVOLTX">View on GitHub</a></div>
+    <div class="card"><h3>Hide and Sink</h3><p>A multiplayer game of strategy and deception where players outwit each other with misdirection and timing. Co-developed with a partner, live on Itch.io.</p><div class="pills"><span>MULTIPLAYER</span><span>CO-DEV</span><span>ITCH.IO</span></div><div class="meta"><div>YEAR<b>2024</b></div><div>TYPE<b>Game Dev</b></div></div><a class="link" href="https://github.com/DEVVOLTX">View on GitHub</a></div>
+    <div class="card"><h3>Car-Wash Booking</h3><p>A full-stack reservation system: customers book slots, staff manage schedules from a full admin panel.</p><div class="pills"><span>PHP</span><span>JAVASCRIPT</span><span>MYSQL</span><span>HTML/CSS</span></div><div class="meta"><div>YEAR<b>2024</b></div><div>TYPE<b>Full-Stack Web</b></div></div><a class="link" href="https://github.com/DEVVOLTX">View on GitHub</a></div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="rv"><h2>My Skills</h2><p class="sub">Tools, engines and security tooling I work with.</p><div class="tiles" id="tl"></div></div></section>
+
+<section id="certs"><div class="rv">
+  <h2>Certificates</h2><p class="sub">Verified credentials, each with a public check link.</p>
+  <div class="g2">
+    <div class="card cert"><small>TOFAS / SPRIX INC. & HIROSHIMA UNIVERSITY</small><h3>JavaScript Level 1</h3><p>April 2026</p><p class="id">ID: 0019d4b64cc2f9ed1c2452c78adbd1f23</p><a class="link" href="https://result.egy.programming-testing.com/certificate-check/0019d4b64cc2f9ed1c2452c78adbd1f23">View certificate</a></div>
+    <div class="card cert"><small>TOFAS / SPRIX INC. & HIROSHIMA UNIVERSITY</small><h3>JavaScript Level 2</h3><p>June 2026</p><p class="id">ID: 0019f0d371ef7f9e586b0ad84890bae40</p><a class="link" href="https://result.egy.programming-testing.com/certificate-check/0019f0d371ef7f9e586b0ad84890bae40">View certificate</a></div>
+    <div class="card cert"><small>CISCO NETWORKING ACADEMY</small><h3>Networking Basics</h3><p>May 2026</p><a class="link" href="https://www.netacad.com/">View certificate</a></div>
+    <div class="card cert"><small>EF EDUCATION FIRST</small><h3>EF SET English Certificate</h3><p>June 2026 · Score 50/100 · B1 Intermediate (CEFR)<br>Reading C2 · Writing B2</p><a class="link" href="https://cert.efset.org/9oACW4">View certificate</a></div>
+  </div>
+</div></section>
+
+<div class="rv sh"><div class="core">CORE</div><h3 class="xl">SYSTEMS</h3><p>Games and sites are only one layer. <b>I connect interfaces, data, logic and security</b> into one coherent system.</p></div>
+<div class="rv sh"><small>01 / DIGITAL EXPERIENCE</small><h3 class="xl">WEB<em>SITES</em></h3><p>Interfaces built to communicate, <b>hold attention</b>, and make a product feel as strong as the technology behind it.</p></div>
+<div class="rv sh"><small>02 / APPLICATION</small><h3 class="xl"><em>WEB</em> APPS</h3><p>From dashboards to complex workflows, <b>every interaction is designed around a real user action</b>.</p>
+<div class="dash"><header><span><b>BOOKING</b>SYSTEM</span><i>● ONLINE</i></header><div class="tl"><div>BOOK<strong>Slots</strong></div><div>SCHEDULE<strong>Staff</strong></div><div>MANAGE<strong>Admin</strong></div></div><svg viewBox="0 0 400 110" preserveAspectRatio="none"><path pathLength="1" d="M0 95 C60 85,90 62,140 64 S220 42,280 40 S340 22,400 10"/></svg><footer>Customer booking • Staff schedule • Admin panel</footer></div></div>
+<div class="rv sh"><small>PROCESS / DELIVERY</small><h3 class="xl">IDEAS <em>→</em> CODE</h3><p>I turn ideas into clean structure and working code. <b>Every decision has a purpose.</b></p><div class="steps"><div><span>◇</span>CONCEPT</div><div><span>&lt;/&gt;</span>BUILD</div><div><span>↗</span>SHIP</div></div></div>
+<section id="design"><div class="rv">
+  <h2>Logo projects</h2><p class="sub">Brand marks designed from scratch.</p>
+  <div class="gal" id="g1"></div>
+  <h2 style="margin-top:80px">Car posters</h2><p class="sub">Cinematic poster edits of hypercars and sports cars.</p>
+  <div class="gal tall" id="g2"></div>
+  <h2 style="margin-top:80px">Client work</h2><p class="sub">Branding and photo editing for real clients.</p>
+  <div class="gal tall" id="g3"></div>
+</div></section>
+
+<section id="contact"><div class="rv">
+  <div class="big shiny">LET'S BUILD<br>THE FUTURE</div>
+  <div class="mail"><span id="em">amrt6509@gmail.com</span><button onclick="navigator.clipboard.writeText('amrt6509@gmail.com');this.textContent='Copied'">Copy</button></div>
+  <div class="soc"><a href="https://github.com/DEVVOLTX">GitHub</a><a href="mailto:amrt6509@gmail.com">Gmail</a><a href="https://www.instagram.com/3am_our1430">Instagram</a><a href="https://www.tiktok.com/@amr_taha62">TikTok</a><a href="https://x.com/Amr2043275">X</a><a href="https://discord.com/users/amr_taha62">Discord</a></div>
+</div></section>
+</main>
+<footer>© 2026 AMR ESSAM · KAFR EL DAWAR, EGYPT</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+/* intro */
+let n=0;const iv=setInterval(()=>{n+=Math.ceil(Math.random()*9);if(n>=100){n=100;clearInterval(iv);setTimeout(()=>{$('#intro').classList.add('done');type()},350)}$('#p').textContent=n;$('.bar i').style.width=n+'%'},70);
+/* typing */
+const words=['Full-Stack Developer','Game Developer','Cybersecurity Enthusiast','Graphic Designer'];let wi=0,ci=0,del=false,started=false;
+function type(){if(started)return;started=true;(function t(){const w=words[wi];ci+=del?-1:1;$('#typed').textContent=w.slice(0,ci);let d=del?35:80;if(!del&&ci===w.length){del=true;d=1400}else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=300}setTimeout(t,d)})()}
+/* marquee */
+const chips='FULL-STACK • CYBERSECURITY • GODOT ENGINE • GAME DEV • GRAPHIC DESIGN • PYTHON • JAVASCRIPT • ';$('#mq').textContent=chips.repeat(4);
+/* galleries */
+const fill=(id,items,cap)=>{$(id).innerHTML=items.map(([s,c])=>`<figure data-full="${s}"><img loading="lazy" src="${s}" alt="${c}">${cap?`<figcaption>${c}</figcaption>`:''}</figure>`).join('')};
+fill('#g1',[1,2,3,4,5,6].map(i=>[`images/logo${i}.jpg`,`Logo design ${i}`]),false);
+fill('#g2',['BMW M4 Competition','Lamborghini Revuelto','BMW M5','Bugatti Tourbillon','Porsche 911 GT3 RS','Pagani Huayra Roadster BC','McLaren 750S','Koenigsegg Jesko Attack'].map((c,i)=>[`images/car${i+1}.jpg`,c]),true);
+fill('#g3',[['images/client1.jpg','Hamo Samy — personal branding poster'],['images/client2.jpg','Mohammed — cinematic neon edit']],true);
+document.addEventListener('click',e=>{const f=e.target.closest('[data-full]');if(f){$('#lb img').src=f.dataset.full;$('#lb').classList.add('on')}else if(e.target.closest('#lb'))$('#lb').classList.remove('on');if(e.target.closest('.links a'))nav.classList.remove('open')});
+addEventListener('keydown',e=>{if(e.key==='Escape')$('#lb').classList.remove('on')});
+/* reveal + counters */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');e.target.querySelectorAll('[data-n]').forEach(c=>{const t=+c.dataset.n;let v=0;const s=setInterval(()=>{c.textContent=++v;if(v>=t)clearInterval(s)},180)});io.unobserve(e.target)}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* active link */
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
+/* cursor */
+const cd=$('#cd'),cr=$('#cr');let mx=0,my=0,rx=0,ry=0;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.opacity=cr.style.opacity=1;cd.style.transform=`translate(${mx}px,${my}px)`;cr.classList.toggle('hv',!!e.target.closest('a,button,.card,figure'))});
+(function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;cr.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop)})();
+
+/* skills tiles */
+$('#tl').innerHTML=[['G','Godot','#478cbf'],['⎇','Git','#f05133'],['$_','Linux','#fcc624'],['K','Kali Linux','#557c94'],['Py','Python','#3776ab'],['JS','JavaScript','#f7df1e'],['PHP','PHP','#777bb4'],['DB','MySQL','#00a3d9'],['5','HTML/CSS','#e34f26'],['N','Nmap','#4e9bcd'],['B','Burp Suite','#ff6633'],['M','Metasploit','#e60026']].map(([m,l,c])=>`<div class="tile" style="color:${c}"><b>${m}</b>${l}</div>`).join('');
+/* i18n: [ar, es, it] keyed by the English text */
+const D={
+"ABOUT":["نبذة","SOBRE MÍ","CHI SONO"],"PROJECTS":["المشاريع","PROYECTOS","PROGETTI"],"SKILLS":["المهارات","HABILIDADES","COMPETENZE"],"CERTS":["الشهادات","CERTIFICADOS","CERTIFICATI"],"DESIGN":["التصميم","DISEÑO","DESIGN"],"CONTACT":["تواصل","CONTACTO","CONTATTI"],
+"SOFTWARE ENGINEER &amp; CREATIVE DEVELOPER":["مهندس برمجيات ومطوّر مبدع","INGENIERO DE SOFTWARE Y DESARROLLADOR CREATIVO","INGEGNERE SOFTWARE E SVILUPPATORE CREATIVO"],
+"Software Engineering student based in Kafr El Dawar, Egypt. I build immersive games, secure systems, and creative visual projects.":["طالب هندسة برمجيات من كفر الدوار، مصر. أبني ألعابًا تفاعلية وأنظمة آمنة ومشاريع بصرية إبداعية.","Estudiante de Ingeniería de Software de Kafr El Dawar, Egipto. Creo juegos inmersivos, sistemas seguros y proyectos visuales creativos.","Studente di Ingegneria del Software di Kafr El Dawar, Egitto. Creo giochi immersivi, sistemi sicuri e progetti visivi creativi."],
+"VIEW WORK":["شاهد أعمالي","VER TRABAJOS","VEDI I LAVORI"],"DOWNLOAD CV":["تحميل السيرة الذاتية","DESCARGAR CV","SCARICA CV"],
+"Building robust systems, crafting immersive games, and breaking digital fortresses.":["أبني أنظمة قوية، وأصنع ألعابًا تفاعلية، وأخترق الحصون الرقمية.","Construyo sistemas sólidos, creo juegos inmersivos y rompo fortalezas digitales.","Costruisco sistemi solidi, creo giochi immersivi e abbatto fortezze digitali."],
+"My expertise spans the entire stack, from frontend interfaces to backend architecture and game engines. I treat engineering as a medium for interactive experiences and secure infrastructure.":["خبرتي تغطي المنظومة كاملة، من الواجهات الأمامية إلى معمارية الخلفية ومحركات الألعاب. أرى الهندسة وسيلة لتجارب تفاعلية وبنية آمنة.","Mi experiencia abarca todo el stack: interfaces, arquitectura backend y motores de juego. Veo la ingeniería como medio para experiencias interactivas e infraestructura segura.","La mia esperienza copre l'intero stack: interfacce, architettura backend e motori di gioco. Vedo l'ingegneria come mezzo per esperienze interattive e infrastrutture sicure."],
+"Education":["التعليم","Educación","Istruzione"],
+"Salah Salem High School<br>General Secondary Education<br>2026 — 2028":["مدرسة صلاح سالم الثانوية<br>الثانوية العامة<br>2026 — 2028","Escuela Secundaria Salah Salem<br>Educación Secundaria General<br>2026 — 2028","Liceo Salah Salem<br>Istruzione Secondaria Generale<br>2026 — 2028"],
+"CERTIFICATES":["الشهادات","CERTIFICADOS","CERTIFICATI"],"LOGOS":["الشعارات","LOGOS","LOGHI"],"CAR POSTERS":["بوسترات السيارات","PÓSTERS DE COCHES","POSTER AUTO"],
+"Selected projects":["مشاريع مختارة","Proyectos seleccionados","Progetti selezionati"],
+"Games and full-stack systems, built solo or with a partner.":["ألعاب وأنظمة متكاملة، بمفردي أو مع شريك.","Juegos y sistemas full-stack, en solitario o con un compañero.","Giochi e sistemi full-stack, da solo o con un partner."],
+"A challenging 2D platformer built for precision and skill. Every level is hand-crafted. All mechanics, levels and artwork designed solo in Godot 4.6 with GDScript.":["لعبة منصات ثنائية الأبعاد صعبة تعتمد على الدقة والمهارة. كل مستوى مصنوع يدويًا، وصممت الميكانيكيات والمستويات والرسومات بمفردي في Godot 4.6 بلغة GDScript.","Un plataformas 2D exigente basado en precisión y habilidad. Cada nivel está hecho a mano. Diseñé en solitario mecánicas, niveles y arte con Godot 4.6 y GDScript.","Un platform 2D impegnativo basato su precisione e abilità. Ogni livello è fatto a mano. Meccaniche, livelli e grafica ideati da solo in Godot 4.6 con GDScript."],
+"A multiplayer game of strategy and deception where players outwit each other with misdirection and timing. Co-developed with a partner, live on Itch.io.":["لعبة جماعية للاستراتيجية والخداع يتفوق فيها اللاعبون على بعضهم بالتمويه وحسن التوقيت. طُوّرت مع شريك ومتاحة على Itch.io.","Un juego multijugador de estrategia y engaño donde se supera al rival con distracción y buen timing. Desarrollado con un compañero, disponible en Itch.io.","Un gioco multiplayer di strategia e inganno dove si batte l'avversario con depistaggi e tempismo. Sviluppato con un partner, su Itch.io."],
+"A full-stack reservation system: customers book slots, staff manage schedules from a full admin panel.":["نظام حجز متكامل: العملاء يحجزون المواعيد والموظفون يديرون الجداول من لوحة تحكم كاملة.","Un sistema de reservas full-stack: los clientes reservan turnos y el personal gestiona horarios desde un panel de administración.","Un sistema di prenotazione full-stack: i clienti prenotano gli slot e lo staff gestisce i turni da un pannello admin."],
+"View on GitHub":["عرض على GitHub","Ver en GitHub","Vedi su GitHub"],"YEAR":["السنة","AÑO","ANNO"],"TYPE":["النوع","TIPO","TIPO"],"Game Dev":["تطوير ألعاب","Desarrollo de juegos","Sviluppo giochi"],"Full-Stack Web":["ويب متكامل","Web Full-Stack","Web Full-Stack"],
+"My Skills":["مهاراتي","Mis habilidades","Le mie competenze"],"Tools, engines and security tooling I work with.":["الأدوات والمحركات وأدوات الأمن التي أعمل بها.","Herramientas, motores y utilidades de seguridad con los que trabajo.","Strumenti, motori e tool di sicurezza che uso."],
+"Certificates":["الشهادات","Certificados","Certificati"],"Verified credentials, each with a public check link.":["شهادات موثّقة، لكل منها رابط تحقق عام.","Credenciales verificadas, cada una con enlace público de comprobación.","Credenziali verificate, ciascuna con link pubblico di controllo."],"View certificate":["عرض الشهادة","Ver certificado","Vedi certificato"],
+"Logo projects":["مشاريع الشعارات","Proyectos de logos","Progetti di loghi"],"Brand marks designed from scratch.":["علامات تجارية صممتها من الصفر.","Marcas diseñadas desde cero.","Marchi progettati da zero."],
+"Car posters":["بوسترات السيارات","Pósters de coches","Poster di auto"],"Cinematic poster edits of hypercars and sports cars.":["بوسترات سينمائية للسيارات الخارقة والرياضية.","Pósters cinematográficos de hiperdeportivos y deportivos.","Poster cinematografici di hypercar e auto sportive."],
+"Client work":["أعمال العملاء","Trabajos para clientes","Lavori per clienti"],"Branding and photo editing for real clients.":["هوية بصرية وتعديل صور لعملاء حقيقيين.","Branding y edición de fotos para clientes reales.","Branding e fotoritocco per clienti reali."],
+"LET'S BUILD<br>THE FUTURE":["لنبنِ<br>المستقبل","CONSTRUYAMOS<br>EL FUTURO","COSTRUIAMO<br>IL FUTURO"],"Copy":["نسخ","Copiar","Copia"],
+"SYSTEMS":["الأنظمة","SISTEMAS","SISTEMI"],
+"Games and sites are only one layer. <b>I connect interfaces, data, logic and security</b> into one coherent system.":["الألعاب والمواقع طبقة واحدة فقط. <b>أربط الواجهات والبيانات والمنطق والأمان</b> في نظام متكامل واحد.","Los juegos y los sitios son solo una capa. <b>Conecto interfaces, datos, lógica y seguridad</b> en un sistema coherente.","Giochi e siti sono solo uno strato. <b>Collego interfacce, dati, logica e sicurezza</b> in un sistema coerente."],
+"01 / DIGITAL EXPERIENCE":["01 / تجربة رقمية","01 / EXPERIENCIA DIGITAL","01 / ESPERIENZA DIGITALE"],"WEB<em>SITES</em>":["مواقع <em>ويب</em>","SITIOS <em>WEB</em>","SITI <em>WEB</em>"],
+"Interfaces built to communicate, <b>hold attention</b>, and make a product feel as strong as the technology behind it.":["واجهات تتواصل، <b>وتشدّ الانتباه</b>، وتجعل المنتج بقوة التقنية التي تقف خلفه.","Interfaces creadas para comunicar, <b>captar la atención</b> y hacer que un producto se sienta tan sólido como su tecnología.","Interfacce pensate per comunicare, <b>catturare l'attenzione</b> e rendere un prodotto solido quanto la tecnologia che lo sostiene."],
+"02 / APPLICATION":["02 / تطبيقات","02 / APLICACIÓN","02 / APPLICAZIONE"],"<em>WEB</em> APPS":["<em>تطبيقات</em> ويب","<em>APPS</em> WEB","<em>APP</em> WEB"],
+"From dashboards to complex workflows, <b>every interaction is designed around a real user action</b>.":["من لوحات التحكم إلى مسارات العمل المعقدة، <b>كل تفاعل مصمم حول إجراء حقيقي للمستخدم</b>.","De paneles a flujos complejos, <b>cada interacción se diseña en torno a una acción real del usuario</b>.","Dai dashboard ai flussi complessi, <b>ogni interazione nasce da un'azione reale dell'utente</b>."],
+"PROCESS / DELIVERY":["المنهج / التسليم","PROCESO / ENTREGA","PROCESSO / CONSEGNA"],"IDEAS <em>→</em> CODE":["أفكار <em>→</em> كود","IDEAS <em>→</em> CÓDIGO","IDEE <em>→</em> CODICE"],
+"I turn ideas into clean structure and working code. <b>Every decision has a purpose.</b>":["أحوّل الأفكار إلى بنية نظيفة وكود يعمل. <b>لكل قرار هدف.</b>","Convierto ideas en estructura limpia y código funcional. <b>Cada decisión tiene un propósito.</b>","Trasformo le idee in struttura pulita e codice funzionante. <b>Ogni decisione ha uno scopo.</b>"],
+"BOOK":["احجز","RESERVAR","PRENOTA"],"SCHEDULE":["جدولة","HORARIOS","TURNI"],"MANAGE":["إدارة","GESTIONAR","GESTISCI"],
+"CONCEPT":["الفكرة","CONCEPTO","CONCEPT"],"BUILD":["البناء","CONSTRUIR","COSTRUISCI"],"SHIP":["الإطلاق","LANZAR","RILASCIA"]};
+const L=['ar','es','it'];
+document.querySelectorAll('body *').forEach(el=>{const k=el.innerHTML.trim();if(D[k])el.dataset.k=k});
+/* text-node keys inside elements that also hold child tags (dash tiles, steps) */
+document.querySelectorAll('.dash .tl div,.steps div').forEach(d=>{const n=[...d.childNodes].find(x=>x.nodeType===3&&D[x.textContent.trim()]);if(n){n.k=n.textContent.trim()}});
+function setLang(l){document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';const i=L.indexOf(l);
+document.querySelectorAll('[data-k]').forEach(el=>{el.innerHTML=i<0?el.dataset.k:D[el.dataset.k][i]});
+document.querySelectorAll('.dash .tl div,.steps div').forEach(d=>{const n=[...d.childNodes].find(x=>x.nodeType===3);if(n&&n.k)n.textContent=i<0?n.k:D[n.k][i]});
+try{localStorage.setItem('lang',l)}catch(e){}}
+$('#lang').onchange=e=>setLang(e.target.value);
+try{const sv=localStorage.getItem('lang');if(sv&&sv!=='en'){$('#lang').value=sv;setLang(sv)}}catch(e){}
+</script>
+</body>
+</html>
